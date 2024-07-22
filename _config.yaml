@@ -1,1 +1,12 @@
-theme: minima
+title: Jordan "Heroic" Hunt
+author: Jordan Hunt
+name: jordanlhunt
+email: jordanlhunt@g.austincc.edu
+minima:
+  skin: solarized
+  social_links:
+    - {
+        platform: linkedin,
+        user_url: "https://www.linkedin.com/in/jordanlhunt/",
+      }
+    - { platform: youtube, user_url: "www.youtube.com/@HeroicGameHobbyist" }
