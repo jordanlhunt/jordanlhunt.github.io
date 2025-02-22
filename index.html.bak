@@ -9,7 +9,7 @@
         <ul>
             <li>
                 Check out my <a
-                    href="https://docs.google.com/document/d/e/2PACX-1vQeKPjS-u8YDe97AKOZ7Uz_m5iYNE1Lbij9HTd4V0xSzZdYSNNuYAbRq5fUvVogyg/pub">Resume</a>
+                    href="https://docs.google.com/document/d/e/2PACX-1vQ9eIsb6z15EL0Qe3ZMHsAXiVPVrJqq3uEp0uNc1UYgJWVtwO60SO1TJXWfMBQGfQ/pub">Resume</a>
             </li>
             <li>
                 Check out my <a href="https://github.com/jordanlhunt">Github</a>
@@ -46,10 +46,17 @@
         <ul>
             <li>
                 Check out my
+                <a href="https://cohost.org/heroicthegamedevelopmenthobbyist">Co-host page</a>
+
+            </li>
+            <li>
+                Check out my
                 <a rel="me" href="https://mastodon.gamedev.place/@heroicthehobbyist">Mastodon page</a>
             </li>
+
         </ul>
     </ul>
+
 </body>
 
 </html>
