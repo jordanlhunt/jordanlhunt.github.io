@@ -1,3 +1,3 @@
 function demoA() {
-    alert("Demo A");
+    alert("There need to make a Weird West 2");
 }
