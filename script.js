@@ -1,3 +1,3 @@
 function demoA() {
-    alert("There need to make a Weird West 2");
+    alert("When I get the skills, I'm going to a Weird West 2");
 }

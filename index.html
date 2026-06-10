@@ -1,63 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jordan's Website</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
-    <script src="./script.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Jordan's Website</h1>
-    <h2 onclick="demoA()">It's basic HTML page because that's all I need</h2>
-    <ul>
-        <li>Software Developer</li>
+    <main>
+        <h1>Jordan's Website</h1>
+        <p>It's a basic HTML page because that's all I need.</p>
+
+        <h2>Software Developer</h2>
         <ul>
-            <li>
-                Check out my <a
-                    href="https://docs.google.com/document/d/e/2PACX-1vQeKPjS-u8YDe97AKOZ7Uz_m5iYNE1Lbij9HTd4V0xSzZdYSNNuYAbRq5fUvVogyg/pub">Resume</a>
-            </li>
-            <li>
-                Check out my <a href="https://github.com/jordanlhunt">Github</a>
-            </li>
-            <li>
-                I'm on <a href="https://www.linkedin.com/in/jordanlhunt/">LinkedIn</a> too. I'd love to work with you
-                and your team.
-            </li>
+            <li>Check out my <a
+                    href="https://docs.google.com/document/d/e/2PACX-1vQeKPjS-u8YDe97AKOZ7Uz_m5iYNE1Lbij9HTd4V0xSzZdYSNNuYAbRq5fUvVogyg/pub"
+                    target="_blank">Resume</a></li>
+            <li>Check out my <a href="https://github.com/jordanlhunt" target="_blank">Github</a></li>
+            <li>I'm on <a href="https://www.linkedin.com/in/jordanlhunt/" target="_blank">LinkedIn</a> too. I'd love to
+                work with you and your team.</li>
         </ul>
-        <li>Game Developer</li>
+
+        <h2>Game Developer</h2>
+
+        <h3>Source Code</h3>
         <ul>
-            <li>Source Code</li>
-            <ul>
-                <li>
-                    Check out my <a href="https://github.com/stars/jordanlhunt/lists/games">Github game projects</a>
-                </li>
-            </ul>
-            <li>Released Projects</li>
-            <ul>
-                <li>
-                    Check out my <a href="https://heroicgames.itch.io/">Itch.io page</a>
-                </li>
-            </ul>
-            <li>
-                Check out my
-                <a href="https://gamejolt.com/@heroicsoftware">Gamejolt page</a>
-            </li>
-            <li>
-                More projects to come as I develop my skills and abilities as a
-                programmer and designer.
-            </li>
+            <li>Check out my <a href="https://github.com/stars/jordanlhunt/lists/games" target="_blank">Github game
+                    projects</a></li>
         </ul>
-        <li>Social Media</li>
+
+        <h3>Released Projects</h3>
         <ul>
-            <li>
-                Check out my
-                <a rel="me" href="https://mastodon.gamedev.place/@heroicthehobbyist">Mastodon page</a>
-            </li>
+            <li>Check out my <a href="https://heroicgames.itch.io/" target="_blank">Itch.io page</a></li>
+            <li>Check out my <a href="https://gamejolt.com/@heroicsoftware" target="_blank">Gamejolt page</a></li>
+            <li>More projects to come as I develop my skills and abilities as a programmer and designer.</li>
         </ul>
-    </ul>
+
+        <h2>Social Media</h2>
+        <ul>
+            <li>Check out my <a href="https://mastodon.gamedev.place/@heroicthehobbyist" target="_blank">Mastodon
+                    page</a></li>
+        </ul>
+
+        <button onclick="demoA()"
+            style="margin-top: 2rem; padding: 10px 20px; font-family: inherit; font-size: 12px; cursor: pointer; background: var(--panel-bg); color: var(--text); border-top: 3px solid var(--border-light); border-left: 3px solid var(--border-light); border-bottom: 3px solid var(--border-dark); border-right: 3px solid var(--border-dark);">Click
+            for a Secret</button>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

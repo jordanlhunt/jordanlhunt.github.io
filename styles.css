@@ -1,4 +1,167 @@
+/* === SNES JRPG Inspired Theme (Warm Orange Palette) === */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --bg: #1a1614;
+    /* Very dark warm brown/black */
+    --panel-bg: #2d2622;
+    /* Dark warm gray/brown for panels */
+    --border-light: #c9956b;
+    /* Warm sand/light orange for top/left bevel */
+    --border-dark: #5c4033;
+    /* Dark brown for bottom/right bevel shadow */
+    --text: #f0e6d2;
+    /* Warm cream/off-white (easier on eyes than pure white) */
+    --accent: #d97736;
+    /* Classic SNES orange */
+    --accent-hover: #ffb347;
+    /* Lighter orange/gold for hover */
+}
+
+/* Base reset & layout */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    background-color: gray;
+    padding: 2rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Typography */
+h1 {
+    text-align: center;
+    color: var(--text);
+    text-shadow: 3px 3px 0 #000;
+    margin: 1.5rem 0 2rem;
+    font-size: 1.4rem;
+}
+
+h2 {
+    text-align: center;
+    color: var(--text);
+    text-shadow: 2px 2px 0 #000;
+    margin: 2rem 0 1rem;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--border-dark);
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin: 1.5rem 0 0.5rem;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* SNES-style dialog/menu boxes (Flat, no nesting) */
+p,
+ul {
+    background: var(--panel-bg);
+    padding: 1.2rem;
+    margin: 1rem 0;
+    /* 16-bit bevel effect: light top/left, dark bottom/right */
+    border-top: 3px solid var(--border-light);
+    border-left: 3px solid var(--border-light);
+    border-bottom: 3px solid var(--border-dark);
+    border-right: 3px solid var(--border-dark);
+}
+
+/* Menu-style list */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin: 0.8rem 0;
+    padding: 0.4rem 0.4rem 0.4rem 1.6rem;
+    position: relative;
+    border-radius: 2px;
+    transition: background 0.1s, color 0.1s;
+}
+
+/* The "Cursor" arrow */
+li::before {
+    content: "▸";
+    position: absolute;
+    left: 0.4rem;
+    color: var(--accent);
+    transition: color 0.1s;
+}
+
+/* Hover effect mimics a JRPG menu selection highlight */
+li:hover {
+    background: rgba(217, 119, 54, 0.15);
+    /* Subtle orange tint */
+}
+
+li:hover::before {
+    color: var(--accent-hover);
+}
+
+/* Links (SNES orange) */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.1s;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* Subtle CRT scanlines (performance-friendly) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.03) 0px,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px,
+            transparent 2px);
+    z-index: 999;
+}
+
+/* Optional vignette for depth */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 998;
+}
+
+/* Mobile-friendly spacing */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+        font-size: 11px;
+    }
+
+    h1 {
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        font-size: 0.9rem;
+    }
+
+    h3 {
+        font-size: 0.8rem;
+    }
 }
