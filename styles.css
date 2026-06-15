@@ -1,167 +1,259 @@
-/* === SNES JRPG Inspired Theme (Warm Orange Palette) === */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --bg: #1a1614;
-    /* Very dark warm brown/black */
-    --panel-bg: #2d2622;
-    /* Dark warm gray/brown for panels */
-    --border-light: #c9956b;
-    /* Warm sand/light orange for top/left bevel */
-    --border-dark: #5c4033;
-    /* Dark brown for bottom/right bevel shadow */
-    --text: #f0e6d2;
-    /* Warm cream/off-white (easier on eyes than pure white) */
-    --accent: #d97736;
-    /* Classic SNES orange */
-    --accent-hover: #ffb347;
-    /* Lighter orange/gold for hover */
+    --bg-top: #0f2247;
+    --bg-bottom: #08152e;
+    --panel: #1a2f63;
+    --panel-deep: #14244b;
+    --panel-soft: #243d7a;
+
+    --blue-light: #77a8ff;
+    --blue-mid: #3d6fd1;
+    --blue-dark: #0a1734;
+
+    --orange: #ff8a3d;
+    --red: #d94a3a;
+    --gold: #ffd37a;
+    --text: #f7f1dc;
+    --text-dim: #cfd8ef;
+
+    --shadow: #050a18;
 }
 
-/* Base reset & layout */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    padding: 2rem;
-    background: var(--bg);
+    min-height: 100%;
+}
+
+body {
+    background:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04), transparent 35%),
+        linear-gradient(to bottom, var(--bg-top), var(--bg-bottom));
     color: var(--text);
     font-family: 'Press Start 2P', monospace;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.8;
-    max-width: 780px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 40px 24px;
 }
 
-/* Typography */
-h1 {
-    text-align: center;
-    color: var(--text);
-    text-shadow: 3px 3px 0 #000;
-    margin: 1.5rem 0 2rem;
-    font-size: 1.4rem;
-}
-
-h2 {
-    text-align: center;
-    color: var(--text);
-    text-shadow: 2px 2px 0 #000;
-    margin: 2rem 0 1rem;
-    font-size: 1.1rem;
-    border-bottom: 2px solid var(--border-dark);
-    padding-bottom: 0.5rem;
-}
-
-h3 {
-    color: var(--accent);
-    font-size: 0.9rem;
-    margin: 1.5rem 0 0.5rem;
-    text-shadow: 1px 1px 0 #000;
-}
-
-/* SNES-style dialog/menu boxes (Flat, no nesting) */
-p,
-ul {
-    background: var(--panel-bg);
-    padding: 1.2rem;
-    margin: 1rem 0;
-    /* 16-bit bevel effect: light top/left, dark bottom/right */
-    border-top: 3px solid var(--border-light);
-    border-left: 3px solid var(--border-light);
-    border-bottom: 3px solid var(--border-dark);
-    border-right: 3px solid var(--border-dark);
-}
-
-/* Menu-style list */
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-li {
-    margin: 0.8rem 0;
-    padding: 0.4rem 0.4rem 0.4rem 1.6rem;
-    position: relative;
-    border-radius: 2px;
-    transition: background 0.1s, color 0.1s;
-}
-
-/* The "Cursor" arrow */
-li::before {
-    content: "▸";
-    position: absolute;
-    left: 0.4rem;
-    color: var(--accent);
-    transition: color 0.1s;
-}
-
-/* Hover effect mimics a JRPG menu selection highlight */
-li:hover {
-    background: rgba(217, 119, 54, 0.15);
-    /* Subtle orange tint */
-}
-
-li:hover::before {
-    color: var(--accent-hover);
-}
-
-/* Links (SNES orange) */
-a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.1s;
-}
-
-a:hover {
-    color: var(--accent-hover);
-    text-shadow: 1px 1px 0 #000;
-}
-
-/* Subtle CRT scanlines (performance-friendly) */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background: repeating-linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.03) 0px,
-            rgba(255, 255, 255, 0.03) 1px,
+    background:
+        repeating-linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.04) 0,
+            rgba(255, 255, 255, 0.04) 1px,
             transparent 1px,
-            transparent 2px);
-    z-index: 999;
+            transparent 3px);
+    opacity: 0.3;
 }
 
-/* Optional vignette for depth */
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
-    z-index: 998;
+.screen {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+    background: linear-gradient(to bottom, #132756, #0d1d43);
+    border-top: 4px solid #a9c8ff;
+    border-left: 4px solid #7ea8f8;
+    border-right: 4px solid #091328;
+    border-bottom: 4px solid #050c1c;
+    box-shadow: 0 0 0 4px #20396e, 12px 12px 0 rgba(0, 0, 0, 0.35);
 }
 
-/* Mobile-friendly spacing */
-@media (max-width: 600px) {
+.title-bar,
+.hero-box,
+.menu-box,
+.status-box {
+    background: linear-gradient(to bottom, var(--panel-soft), var(--panel));
+    border-top: 3px solid var(--blue-light);
+    border-left: 3px solid var(--blue-light);
+    border-right: 3px solid var(--blue-dark);
+    border-bottom: 3px solid var(--blue-dark);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.05);
+}
+
+.title-bar {
+    text-align: center;
+    padding: 24px 20px 20px;
+    margin-bottom: 24px;
+}
+
+.window-label {
+    color: var(--gold);
+    font-size: 0.72rem;
+    margin: 0 0 12px;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 2vw, 2.4rem);
+    line-height: 1.3;
+    color: var(--text);
+    text-shadow: 4px 4px 0 var(--shadow);
+}
+
+.subtitle {
+    margin: 14px 0 0;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+}
+
+.hero-box {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 22px;
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: var(--orange);
+    font-size: 0.72rem;
+}
+
+h2,
+h3 {
+    margin-top: 0;
+    text-shadow: 2px 2px 0 var(--shadow);
+}
+
+h2 {
+    margin-bottom: 14px;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+h3 {
+    margin-bottom: 16px;
+    color: var(--gold);
+    font-size: 0.85rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(119, 168, 255, 0.35);
+}
+
+.intro,
+.status-box p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+}
+
+.status-box {
+    padding: 18px;
+    align-self: start;
+}
+
+.status-box p+p {
+    margin-top: 10px;
+}
+
+.status-box span {
+    color: var(--orange);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.menu-box {
+    padding: 20px;
+}
+
+.menu-box-wide {
+    grid-column: 1 / -1;
+}
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-list li {
+    position: relative;
+    margin: 0;
+    padding: 10px 10px 10px 34px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu-list li:last-child {
+    border-bottom: 0;
+}
+
+.menu-list li::before {
+    content: "☞";
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    color: var(--red);
+    font-size: 1rem;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.menu-list li:hover {
+    background: linear-gradient(to right, rgba(217, 74, 58, 0.18), rgba(255, 138, 61, 0.08));
+}
+
+.menu-list li:hover::before {
+    color: var(--orange);
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+
+a:hover,
+a:focus {
+    color: #ffffff;
+    text-shadow: 2px 2px 0 var(--shadow);
+}
+
+@media (max-width: 900px) {
+
+    .hero-box,
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-box-wide {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 640px) {
     body {
-        padding: 1rem;
-        font-size: 11px;
+        padding: 20px 12px;
+        font-size: 12px;
+    }
+
+    .screen {
+        padding: 14px;
+    }
+
+    .title-bar,
+    .hero-box,
+    .menu-box,
+    .status-box {
+        padding: 16px;
     }
 
     h1 {
-        font-size: 1.1rem;
-    }
-
-    h2 {
-        font-size: 0.9rem;
-    }
-
-    h3 {
-        font-size: 0.8rem;
+        font-size: 1.3rem;
     }
 }
