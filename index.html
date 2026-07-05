@@ -1,65 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jordan's Website</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jordan Hunt</title>
+    <link rel="stylesheet" href="https://unpkg.com/snes.css@1.0.1/dist/snes.min.css">
 </head>
 
 <body>
-    <main class="screen">
+    <div class="screen">
+
         <header class="title-bar">
-            <p class="window-label">Character Profile</p>
+            <p class="window-label">Player Select</p>
             <h1>Jordan Hunt</h1>
-            <p class="subtitle">Software Developer / Game Developer</p>
+            <p class="subtitle">Computer Science Student — Texas State University</p>
         </header>
+
         <section class="hero-box">
             <div>
                 <p class="eyebrow">Active Quest</p>
                 <h2>Building projects in C, C++, and C#</h2>
                 <p class="intro">
-                    Building practical skills in software the old-fashion way. Currently working on a PAC-MAN clone
-                    using
-                    SDL2.
+                    Building practical skills in software the old-fashioned way.
+                    Currently working on a PAC-MAN clone using SDL2.
                 </p>
             </div>
-            <div class="status-box">
-                <p><span>Goal</span> Find a job in the game industry</p>
-                <p><span>University</span> Texas State</p>
-                <p><span>Location</span> Round Rock, TX</p>
-            </div>
+
+            <aside class="status-box">
+                <p>Goal <span>Find a job in the game industry</span></p>
+                <p>University <span>Texas State</span></p>
+                <p>Location <span>Round Rock, TX</span></p>
+            </aside>
         </section>
-        <section class="menu-grid">
-            <article class="menu-box">
-                <h3>Resume</h3>
-                <ul class="menu-list">
-                    <li><a
-                            href="https://docs.google.com/document/d/e/2PACX-1vQeKPjS-u8YDe97AKOZ7Uz_m5iYNE1Lbij9HTd4V0xSzZdYSNNuYAbRq5fUvVogyg/pub">Resume</a>
-                    </li>
-                    <li><a href="https://github.com/jordanlhunt">GitHub</a></li>
-                    <li><a href="https://www.linkedin.com/in/jordanlhunt/">LinkedIn</a></li>
-                </ul>
-            </article>
-            <article class="menu-box">
-                <h3>Hobbies</h3>
-                <ul class="menu-list">
-                    <li><a href="https://github.com/stars/jordanlhunt/lists/games">GitHub Projects</a></li>
-                    <li><a href="https://heroicgames.itch.io/">Itch.io</a></li>
-                    <li><a href="https://gamejolt.com/@heroicsoftware">Game Jolt</a></li>
-                    <li><a href="https://mastodon.gamedev.place/@heroicthehobbyist">Mastodon</a></li>
-                </ul>
-            </article>
-            <article class="menu-box menu-box-wide">
+
+        <nav class="menu-grid">
+            <div class="menu-box">
                 <h3>Writing</h3>
                 <ul class="menu-list">
-                    <li>Blog</li>
-                    <li>Creative Writing</li>
+                    <li><a href="writing.html">Short fiction</a></li>
+                    <li><a href="writing.html#thoughts">Notes &amp; thoughts</a></li>
                 </ul>
-            </article>
-        </section>
-    </main>
+            </div>
+
+            <div class="menu-box">
+                <h3>Games &amp; Code</h3>
+                <ul class="menu-list">
+                    <li><a href="games.html">C / C++ projects</a></li>
+                    <li><a href="games.html#pacman">PAC-MAN clone (SDL2)</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-box menu-box-wide">
+                <h3>Resume &amp; Contact</h3>
+                <ul class="menu-list">
+                    <li><a href="resume.html">View resume</a></li>
+                    <li><a href="mailto:you@example.com">Email me</a></li>
+                    <li><a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
 </body>
 
 </html>
