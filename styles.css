@@ -1,5 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+.screen,
+.menu-box,
+.title-bar,
+.hero-box,
+.status-box {
+    clip-path: polygon(0px 8px, 8px 8px, 8px 0px,
+            calc(100% - 8px) 0px, calc(100% - 8px) 8px, 100% 8px,
+            100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+            8px 100%, 8px calc(100% - 8px), 0px calc(100% - 8px));
+}
+
+.screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+img {
+    image-rendering: pixelated;
+}
+
 :root {
     --bg-top: #0f2247;
     --bg-bottom: #08152e;
