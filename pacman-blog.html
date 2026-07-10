@@ -1,326 +1,555 @@
-<h1 id="i-wrote-a-rudimentary-pac-man-clone-in-c">I Wrote A Rudimentary PAC-MAN Clone In C</h1>
-<p><em>(No generative AI was used in the writing of this, just want to address that off the rip. Also this isn&#39;t
-        SEO&#39;ed in anyway and I&#39;m not trying to sell you anything. All the links are purely to provide context or
-        credit)</em></p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<ul>
-    <li><a href="#about-me">About Me</a></li>
-    <li><a href="#what-inspired-me-to-pick-this-project">What Inspired Me To Pick This Project</a></li>
-    <li><a href="#my-programming-background">My Programming Background</a></li>
-    <li><a href="#why-i-didnt-originally-proceed-with-game-development-as-a-hobby">Why I Didn&#39;t Originally Proceed
-            With Game Development as a Hobby</a></li>
-    <li><a href="#about-the-project">About The Project</a>
-        <ul>
-            <li><a href="#picking-where-and-how-to-start">Picking Where and How to Start</a></li>
-            <li><a href="#getting-lucky-with-the-dossier">Getting Lucky With The Dossier</a></li>
-            <li><a href="#my-development-configuration">My Development Configuration</a></li>
-        </ul>
-    </li>
-    <li><a href="#what-i-actually-learned-during-development-in-a-technical-sense">What I Actually Learned During
-            Development In A Technical Sense</a>
-        <ul>
-            <li><a href="#headers">Headers</a></li>
-            <li><a href="#separation-of-concerns">Separation of Concerns</a></li>
-            <li><a href="#entity-component-system">Entity Component System</a></li>
-            <li><a href="#defensive-programming">Defensive Programming</a></li>
-            <li><a href="#the-basics-of-git">The Basics of Git</a></li>
-            <li><a href="#pointers-arent-that-complex-anymore">Pointers aren&#39;t that complex anymore</a></li>
-            <li><a href="#other-design-patterns">Other Design Patterns</a></li>
-            <li><a href="#the-importance-of-iteration">The Importance Of Iteration</a></li>
-        </ul>
-    </li>
-    <li><a href="#what-i-actually-learned-during-development-in-moral-sense">What I Actually Learned During Development
-            in Moral Sense</a>
-        <ul>
-            <li><a href="#the-internet-warps-your-senses">The Internet Warps Your Senses</a></li>
-            <li><a href="#getting-better-at-something-is-very-boring">Getting Better At Something Is Very Boring</a>
-            </li>
-            <li><a href="#knowing-how-my-tools-works-helps-me-work">Knowing How My Tools Works Helps Me work</a></li>
-        </ul>
-    </li>
-    <li><a href="#whats-next">What&#39;s Next</a></li>
-</ul>
-<p>Hello Internet! I wrote an approximate reconstruction of PAC-MAN implementation in C using SDL2. My project isn&#39;t
-    wholly a 1-to-1 arcade cabinet recreation but it get most of the fundamentals down. It was a really fun project and
-    it helped me complete something from zero, which is often one of the advice you hear from independent game
-    developers and computer programmers alike. This project was totally self-guided (often misguided) and free of
-    generative AI usage. It was a project by me for me and it&#39;s many flaws and shortcomings are mine too. The whole
-    project was learning experience that was meant to force me to buckle myself into my seat and write some C, do
-    research, and commit myself to the learning the process. Overall, I think it went quite well and I&#39;ll share my
-    thoughts in this blog. I also want to write more in general, so this will be an excellent means to practice
-    communicating my thoughts and experiences.</p>
-<h2 id="about-me">About Me</h2>
-<h2 id="what-inspired-me-to-pick-this-project">What Inspired Me To Pick This Project</h2>
-<p>As is common with many computer programmers, I got interested in writing code since through playing games. I grew up
-    playing games on the family computer along with reading comic-b ooks, manga, and sci-fi novels. I also played
-    tabletop games like <a href="https://wizkids.com/heroclix/">HeroClix</a> and <a
-        href="https://en.wikipedia.org/wiki/MechWarrior:_Dark_Age">MechWarrior: Dark Age</a> and tabletop role-playing
-    games like <a href="https://paizo.com/pathfinder">Pathfinder</a>, <a
-        href="https://www.mongoosepublishing.com/collections/traveller-rpgs">Traveller</a>, <a
-        href="https://en.wikipedia.org/wiki/D20_Modern">D20 Modern</a>, and many of the <a
-        href="https://web.archive.org/web/20050308083942/http://www.white-wolf.com/">White Wolf games</a>. I played some
-    Magic: The Gathering as well, I was always fond of Blue decks. Of the countless games I have played, the ones that
-    made me want to learn how to make games were the marvelous <a href="https://cavestory.com/games/cavestory+">Cave
-        Story+</a> and <a href="https://www.supergiantgames.com/games/bastion/">Bastion</a> in the year 2011.</p>
-<p>Those two games really made me understand that video games could be both entertaining and also tell stories that
-    really touch the player&#39;s heart. Prior and after I have played games that I loved and impacted me, but something
-    about playing those two game at made me understand that games were made by people, and I could be a person who made
-    games. Those games were were released during a time where online distribution and the very of idea an indie game
-    were novel, and that really made me think &quot;hey, I could make a game. I have cool idea...&quot;.</p>
-<p>For the record that &quot;cool idea&quot; has not come to fruition because it&#39;s not a &quot;cool idea&quot; and I
-    still lack the skills to make my &quot;dream game&quot; come to life</p>
-<p>Fast-forward today I&#39;m a 35 year old man going back to school to get computer science degree in the age of
-    generative AI with hopes to get a job in the rapidly crumbling industry of video games. So after taking Computer
-    Architecture in the Spring and seeing C++ in action with a really great professor who really inspired me to more
-    actively engage with my learning I decided I needed a summer programming project. I wanted to do something outside
-    my current ability level and something that would force me to learn something.</p>
-<h2 id="my-programming-background">My Programming Background</h2>
-<p>I actually have a previous Bachelor&#39;s degree in &quot;Information Studies&quot; on my first attempt at
-    university. I genuinely cannot tell you what I learned in that degree program as I don&#39;t even know what it
-    means. I essentially failed out of computer science my first time and I was luck enough to have an advisor who
-    really cared about student success. She helped me scrape my credits together and bundle together to a degree so I
-    could graduate in a timely fashion. I did a little bit of Python and Java in school but nothing larger than a
-    homework program that did some I/O and a for loop or two.</p>
-<p>I even managed to get a job after graduation and worked at a MEGACORP for a bit. I didn&#39;t really do much
-    programming there either, it was a very small amount of JavaScript my first year and a moderate amount of SQL. I
-    also learned proprietary software I will never see again before I quit because I wasn&#39;t going anywhere or doing
-    anything and most importantly I was miserable.</p>
-<p>All of my programming came from a couple of E-books on XNA/Monogame and a random smattering of online tutorials. When
-    I first tried to learn game development it was &quot;<a
-        href="https://en.wikipedia.org/wiki/Microsoft_XNA">XNA</a>&quot; which later became the &quot;<a
-        href="https://monogame.net/">Monogame</a>&quot; that you see today. I originally picked books on Monogame
-    because I learned that Bastion was written in Monogame. I would later play &quot;Salt &amp; Sanctuary&quot; another
-    excellent game also written in XNA. The XNA/Monogame books were are quite good and I&#39;d highly recommend anyone
-    interested in learning game development pick up Monogame. It&#39;s really beginner-friendly and the online community
-    is really nice.</p>
-<p>I even did a little bit GDScript with the rise of Godot. I did some tutorials through <a
-        href="https://www.gdquest.com/">GDQuest</a> and they were quite good as well. However I never quite took the
-    extra step of the path of guided tutorials. I always felt like I &quot;wanted&quot; to make games, but never had the
-    drive to really learn the &quot;process&quot; of making games. I liked &quot;wanting&quot; more than i liked
-    &quot;trying&quot; and I feel like this is a common behavior with a particular type of person. You get infintenatly
-</p>
-<h2 id="why-i-didn-t-originally-proceed-with-game-development-as-a-hobby">Why I Didn&#39;t Originally Proceed With Game
-    Development as a Hobby</h2>
-<p>The biggest issue in my programming background were primarily two things: lack of self-confidence in my programming
-    ability and a lack of self-motivating discipline. Those two issues created a negative feedback loop that really
-    hindered my ability to do anything outside of a very direct tutorial. It&#39;s really messed up because those two
-    issues made getting better really hard. You can&#39;t get better as a programmer if you don&#39;t have the
-    discipline and self-motivation try to solve harder problems, and you can&#39;t improve your discipline if you
-    don&#39;t try to do anything outside your comfort-zone. A vicious cycle that kept me weight down and limited my
-    digital horizons.</p>
-<p>I read just about <a href="https://www.gamedeveloper.com/game-platforms">magazine article</a> (remember when those
-    were a thing?), <a href="https://makegames.tumblr.com/post/1136623767/finishing-a-game">every blog</a>, and <a
-        href="https://buy.indiegamethemovie.com/">watched every developer interview on </a><a
-        href="https://buy.indiegamethemovie.com/">&quot;how to be an indie developer</a><a
-        href="https://buy.indiegamethemovie.com/">&quot; and all of them said</a>&quot;just make games&quot;. The
-    &quot;just&quot; part for me was my biggest issue, I couldn&#39;t seem to &quot;just&quot; do something. My problem
-    was I never really took that to heart because I never really believed I could do anything.</p>
-<p>I didn&#39;t try hard enough mostly because I didn&#39;t want to fall short of my expectations. I think it&#39;s an
-    elaborate means of procrastination to avoid disappointment ultimately. I don&#39;t know the exact reason but I spent
-    far too long of my time in front of the computer not believing in myself. I did this project to prove to myself I
-    can do something, even something hard and unknown. I also want to give my chance to make something that wasn&#39;t
-    perfect. I also hope that anyone who may read this also internalizes the fact they too can do something.</p>
-<p>I think I worked though though these limiting beliefs. At least enough for now. I know now I can do things, so long
-    as I try hard and don&#39;t fight myself the entire time. I think this is true for anyone, I think we can all do
-    great things.</p>
-<h2 id="about-the-project">About The Project</h2>
-<h3 id="picking-where-and-how-to-start">Picking Where and How to Start</h3>
-<p>I recently read <a
-        href="https://www.penguinrandomhouse.com/books/96382/masters-of-doom-by-david-kushner/9780812972153/">&quot;Master&#39;s
-        Of Doom</a><a
-        href="https://www.penguinrandomhouse.com/books/96382/masters-of-doom-by-david-kushner/9780812972153/">&quot;</a>
-    book and it was a really good history lesson on nature of game development. I was really impressed that DOOM was
-    written in C, and always was a bit scared of C. My Computer Architecture course had us write in C and C++ and it was
-    really refreshing. John Romero also mentions really liking PAC-MAN in his <a
-        href="https://romero.com/shop/p/doomguy">&quot;DOOM Guy</a><a
-        href="https://romero.com/shop/p/doomguy">&quot;</a> autobiography so I chose the arcade classic of yesteryear.
-</p>
-<p>I had done some C and C++ tutorials in previous ventures so I thought it would be an good reason to restart where I
-    originally began. I did some of the <a href="https://lazyfoo.net/">LazyFoo SDL2 tutorials</a> in the past but again
-    nothing outside the tutorial guidelines. These tutorials are quite good and I&#39;d recommend them as an intro to
-    SDL. I also wanted to do something in the &quot;old-school&quot; sense and just to start from zero. I elected not to
-    use generative AI software or tools for this project as well.</p>
-<p>I wanted to focus on learning and I&#39;m of the belief that learning comes from the mistakes you make and the
-    struggle of trying to figure something out. Which is the least glamorous part of learning and the part I think most
-    everything online seems to skip over. I think in the long term this choice will benefit me as a developer. It may
-    slow me down and may not make as marketable but I do think it will help me be a better computer science student.</p>
-<p>I didn&#39;t do this project in one sitting, I didn&#39;t do this project on my first try, I didn&#39;t do a perfect
-    recreation, and that&#39;s fine. I sturggled on a lot of things and had to look up a lot, but that was the goal so I
-    see that as a success.</p>
-<h3 id="getting-lucky-with-the-dossier">Getting Lucky With The Dossier</h3>
-<p>When I picked a PAC-MAN clone, I knew I&#39;d have to do some research on the game. During my initial research I
-    discovered the <a href="https://pacman.holenet.info/">Pac-Man Dossier</a>, and it served as my design document.
-    Strangely enough I discovered it through the gamedeveloper magazine website. This webpage was treasure trove of
-    information both on the game as well as a great history lesson on the game.</p>
-<p>The Dossier has a lot of great information. It was also something I could reference on what to research. Searching
-    for programming or software help these days isn&#39;t that great. I modified my Ublock filters to get bad search
-    results, and I had to edit my YouTube extensions to do filter out the many unrelated search results.</p>
-<p>I would read something from the dossier, run into something I didn&#39;t know how to do and internet search for an
-    example. Many of the examples i&#39;d fine were not in C but in Java or Python which then lead me to research how to
-    do something in C. That wasn&#39;t completely optimal workflow it did expose me to a lot of code and reading a lot
-    of different thing is I think helpful.</p>
-<p>The Dossier included a lot of the inner-working of PAC-MAN and saved me a lot of time on what to do but it wasn&#39;t
-    a how-to guide. I really liked how with this project I had to figure &quot;how&quot; to do something, even though
-    the dossier pretty clearly explain &quot;what&quot; was done, often even &quot;why&quot; something was done.</p>
-<h3 id="my-development-configuration">My Development Configuration</h3>
-<p>I recently switch to <a href="https://www.linuxmint.com/">Linux Mint</a> due to frustration with Windows 11 and
-    things have been pretty swell. Development on Linux has been pretty breezy overall. I downloaded <a
-        href="https://www.libsdl.org/">SDL2 and SDL3</a> from the website and <a
-        href="https://vscodium.com/">VSCodium</a> did a most of the C/C++ configuration for me. I set up my Git
-    repository and I was pretty much all set.</p>
-<p>I tried using the classic Linux editors like <a href="https://www.gnu.org/software/emacs/">emacs</a> and <a
-        href="https://www.vim.org/">vim</a>, but I couldn&#39;t quite get the hang of it. I grew up on Windows machines
-    and I&#39;m still rather unfamiliar with CLI style computing and text editing. They are great tools, but they are
-    bit too old-school for me. I also tried <a href="https://zed.dev/">Zed</a> for a bit during development (I disabled
-    the AI features), but I didn&#39;t quite like that either. VSCodium and it&#39;s many extensions well suite all my
-    needs.</p>
-<p>I also download the <a href="https://sourcefoundry.org/hack/">Hack font</a> because I think it&#39;s really easy on
-    my eyes. I think having a good font is important for development. If you&#39;re going to look at a screen with
-    glyphs on it all day, you might as well have glyths that are aesthetically pleasing and present information clearly.
-    There are <a href="https://www.programmingfonts.org/">tons to choose from</a> and I think it gives your code some
-    personality. Having &#39;l&#39;,&#39;1&#39;,&#39;i&#39; all look different or &#39;O&#39;, &#39;0&#39;, and
-    &#39;8&#39; is one of those things you can&#39;t &quot;unsee&quot; once you switch fonts. I think it&#39;s a simple
-    quality of life improvement for anyone who looks at screens, but especially for programmers.</p>
-<h2 id="what-i-actually-learned-during-development-in-a-technical-sense">What I Actually Learned During Development In A
-    Technical Sense</h2>
-<h3 id="headers">Headers</h3>
-<p>This was my first C project that had multiple files. I remember once did an assignment in community college that had
-    one or two shared headers but that was it. My project grew I found that there was lot of code that needed to know
-    where other code was. I had multiple instances of circular dependencies throughout my development process. The
-    biggest culprit was <code>gamecontext.h</code>, <code>ecs.h</code>, and <code>main.h</code> I think because those
-    are the most involved pieces of code I have.</p>
-<p>I liked using headers because they are force you to create to think about function signatures and declaring constants
-    ahead of time. It&#39;s sort of like pseudocode in that you don&#39;t quite know how something ought to be
-    implemented but it gives you a general shape most of the time and you can easily modify. Having done this project in
-    C I found it to be very particularly insightful in that C doesn&#39;t do a lot things for you. I was forced to learn
-    about how forward declaration work and made sure my <code>.h</code> were populated with the proper data. Making sure
-    functions signatures match in there <code>.c</code> and <code>.h</code> definition is important and I goofed that up
-    often.</p>
-<h3 id="separation-of-concerns">Separation of Concerns</h3>
-<p>At my first year at MEGACORP in my naive vigor to be a good employee I read a small amount <a
-        href="[Head First Design Patterns [Book]](https://www.oreilly.com/library/view/head-first-design/0596007124/">Heads
-        First Design Patterns</a>) because it was available in the employee &quot;library&quot;. The &quot;library&quot;
-    being a bookcase full of full-throated Corpo propaganda, trite entrepreneur books and mid 90&#39;s MBA dreck, and
-    religious conversion pamphlets. The design pattern book just caught me eye by chance and I read at my desk.</p>
-<p>I learned about &quot;separation of concerns&quot; from that book and I have seen and read that design pattern
-    mentioned in a many of the game development tutorial as well. I tried to divide up as much as possible to make
-    things do one thing or only handle one thing. Doing or handling one can be a rather broad statement but I think I
-    managed to keep things small enough that the scope and context of anyone particular file could stay in my head.</p>
-<p><code>main.c</code> for example handles the game loop. Handling the game loop is main&#39;s job but handling the game
-    loop means it has to coordinate a lot different things. Things like the <code>gamecontext</code> and the
-    <code>sdlcontext</code> and all the various systems I ended up building. <code>main</code> had to handled all of
-    those things but that mean all of those things themselves had to handle other things and often themselves.
-</p>
-<p>I like to think of separation of concerns a bit like toy blocks in each concern itself is a block you bind and bundle
-    blocks together to create small chunks of the whole set. With <code>main</code> being the whole playset that
-    contains all of the smaller sets you had built prior. Also much like a toy block set, it&#39;s can difficult to see
-    how a single piece fits into the whole until you actually put it all together. During the very beginning of my the
-    project I started with just <code>map.h</code>, <code>maptile.c</code>, and <code>maze.txt</code>. It&#39;s
-    difficult to see how all of that will build into a larger game, but you can much more easily see how maptiles can be
-    generated from the .txt file and be bundled together to create a map.</p>
-<h3 id="entity-component-system">Entity Component System</h3>
-<p>The Entity Component System (ECS) what I&#39;m actually most proud of in this project. I first heard of an ECS from
-    the <a href="https://gameprogrammingpatterns.com/">Game Programming Patterns book</a> I bought a long time ago. I
-    read a little bit of before but I never read it cover to cover. I&#39;m currently reading now as part of my mental
-    recalibration toward reading more physical books every month. I don&#39;t rightly know if my project really needed
-    an ECS, but was really fun to research what an ECS is, how an ECS can be used for my particular project, and
-    implementing through trial and error.</p>
-<p>Making things an <code>Entity</code> that&#39;s defined by various IDs made thinking about the types of systems I
-    needed a lot easier. I had <code>POSITION</code>, <code>VELOCITY</code>, <code>RENDERABLE</code> entity IDs so it me
-    think I would need things like a <code>movementsystem</code>, <code>collisionsystem</code>,
-    <code>renderSystem</code> and so on. Having an ECS made features like frightened mode, fruit spawning, and dot
-    scoring easier to manage, since they’re just component changes or new entities rather than spe cial‑case if‑chains.
-</p>
-<p>This allowed me to focus more on &quot;<a href="https://en.wikipedia.org/wiki/Data-oriented_design">Data-Oriented
-        Design</a>&quot; which is something I hear/see often online to be a superior methodology to &quot;<a
-        href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented programming</a>&quot;. I
-    don&#39;t know if was doing it correctly but I did see the value of Data-oriented programming.</p>
-<h3 id="defensive-programming">Defensive Programming</h3>
-<p>I have never created anything particularly large in C and I didn&#39;t know how easy it is write code that
-    &quot;build&quot; but doesn&#39;t run or runs but crashes as soon as you do something. Segmentation faults are a
-    common trope online but I didn&#39;t realize how real it was until I started this project. I made sure to a
-    <code>NULL</code> pointers were handled properly, either through a instant <code>return</code> or a some sort of
-    output to console. C doesn&#39;t have all of the sort of niceties in something you&#39;d get in something like Java.
-    There aren&#39;t a lot of functions like <code>.length()</code> so you have to keep track of array bounds yourself.
-    Just little things like that made me code with a bit more. I actually enjoy that in the sense it forces me to
-    actively think about those sorts of thing. In a project like this where&#39; it&#39;s just me, I didn&#39;t want to
-    develop bad habits so I spent a some time reading StackOverflow and Programming related subreddits to get little bit
-    of a general feel for what a C programmer shouldn&#39;t do.
-</p>
-<h3 id="the-basics-of-git">The Basics of Git</h3>
-<p>I used Git and GitHub to store my code that allowed me to work on my home PC and the University PC with relative
-    easy. Learning to <code>git add</code>, <code>git commit -m</code>, <code>git push</code>, and <code>git pull</code>
-    became pretty natural. I used the GUI in VSCodium mostly but I also did several through the CLI as well. I even
-    created for the entity component system. I thought it would be good way to try and develop something totally
-    separate from the rest of the code. Once I got it work I was able to just merge it back into the main branch. It was
-    relatively easy to create and merge. I would imagine if this project were more complex or had more contributors
-    it&#39;d be more important to track changes more rigorously but luckily I didn&#39;t have to worry about that at
-    all.</p>
-<h3 id="pointers-aren-t-that-complex-anymore">Pointers aren&#39;t that complex anymore</h3>
-<p>For the longest time I thought pointers were super confusing and unwieldily curiosities of the C language. With this
-    project I have come to appreciate their value. A pointer is an address in memory, they referring to a value
-    somewhere else. Dereferencing a pointer with <code>&amp;</code> allows you access the value at that memory address.
-    That&#39;s it. Pointers are often a tricky thing for CS students (myself included most certainly) but using them
-    more frequently gets you into a groove and it starts to become more natural. One of the things that tripped me up
-    remembering I wasn&#39;t always passing a pointer, sometimes I was passing the memory address of the value.</p>
-<h3 id="other-design-patterns">Other Design Patterns</h3>
-<p>I didn&#39;t do it intentionally but I did implement the Flyweight and Facade Patterns. The <a
-        href="https://en.wikipedia.org/wiki/Flyweight_pattern">Flyweight Pattern</a> is something I recognized from my
-    previous Monogame/XNA development and using in my <code>graphics.c</code> seemed to make sense to me. I loaded the
-    spritesheet of the PAC-MAN then is reused to draw every sprite draw call instead of loading duplicate texture for
-    each entity. I didn&#39;t know the name of the Flyweight pattern and I had never seen any other way of drawing
-    sprites.</p>
-<p>I also used the <a href="https://en.wikipedia.org/wiki/Facade_pattern">Facade Pattern</a> another one I was
-    unfamiliar with by name but I knew the general idea behind it before hand. In my <code>InitializeSDL()</code> method
-    it&#39;s the single entry point for a more complex instructions. I didn&#39;t know that was a design pattern until
-    re-reading the Heads Up Design patterns book and searching online for fundamental C programming software engineering
-    recommendations</p>
-<h3 id="the-importance-of-iteration">The Importance Of Iteration</h3>
-<p>One of if not the most important things I learned in this project from a technical perspective is that programming is
-    a very iterative process. A lot of my code is and git commit messages are full of message saying something is
-    &quot;sorta&quot; working or I &quot;fixed&quot; something multiple times. Ideally, I&#39;d like to be able to fix
-    things once and be able to move forward on something else, but until then I think programming on my own is about
-    getting something working and then getting something correct later, and then getting it &quot;right&quot; finally.
-</p>
-<p>I don&#39;t think it&#39;s critical to focus on getting everything right on my first try every time for everything
-    when it comes to programming as I don&#39;t think that&#39;s a healthy way of looking at problem-solving. I think
-    that&#39; a hold over from our education system&#39;s test taking approach, in that they are one and done
-    all-or-nothing exams. Working on a personal project gives you time to make mistakes and learn from them at much more
-    lower stakes.</p>
-<p>Making mistakes, addressing the mistakes, and iterating is I think the purest loop of any programming project. There
-    is no avoiding, and even trying to avoid is costly in time and understanding. Learning to use <a
-        href="https://sourceware.org/git/binutils-gdb.git">gdb</a>, <a href="https://valgrind.org/">valgrind</a>, and <a
-        href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">rubber ducking</a> are all essential skills for
-    programming. In the same way creative writing involves a lot of re-writing, programming involves a lot of iteration.
-    Sometimes it&#39;s a sign I going in the wrong direction, my project had many of those instances, but more often
-    than it was I learned the most.</p>
-<h2 id="what-i-actually-learned-during-development-in-moral-sense">What I Actually Learned During Development in Moral
-    Sense</h2>
-<h3 id="the-internet-warps-your-senses">The Internet Warps Your Senses</h3>
-<p>I think there has been some sort of narrative in programming circles that everything is super fast and if you&#39;re
-    not hacking together something near instantly you&#39;re not really a programmer. I started this project on April
-    9th and I&#39;m finishing this post-development writeup on July 9th. Part of me feels like three months from zero to
-    a functional prototype is rather good, however speed really one of the primary measures of value in our modern
-    development culture. I think that&#39;s foolish and we are rewarding the wrong things for the wrong reasons in
-    general. I didn&#39;t make the <a href="https://en.wikipedia.org/wiki/Killer_application">killer-app</a> in three
-    months and that&#39;s fine. That was never my objective.</p>
-<h3 id="getting-better-at-something-is-very-boring">Getting Better At Something Is Very Boring</h3>
-<p>Much like any other skill, art, or craft, getting better at programming is a very incremental and unremarkable. I
-    know a lot of stuff I didn&#39;t know prior because of this project, however I can&#39;t just hack together a full
-    arcade classic like <a href="https://en.wikipedia.org/wiki/Centipede_(video_game">Centipede</a>) or <a
-        href="https://en.wikipedia.org/wiki/Bubble_Bobble">Bubble Bobble</a>. I&#39;ll have to keep coding away and
-    solving more problems to be able to put one of those games together from scratch.</p>
-<h3 id="knowing-how-my-tools-works-helps-me-work">Knowing How My Tools Works Helps Me work</h3>
-<p>Knowing the basics of how my tools (All the various softwares I use) work makes using them to easier. Taking some
-    time to learn hotkeys makes getting around VSCodium easier. Even just simple things like changing files with
-    <code>CTRL+P</code> or go to symbol with <code>CTRL+T</code> helps reduce the friction of coding. There is a lot of
-    friction already in development and a lot of it is totally necessary, but I shouldn&#39;t have friction going from
-    one page to another. I&#39;m going to learn more hotkeys and other CLI tools to help my development for my next
-    project.
-</p>
-<h2 id="what-s-next">What&#39;s Next</h2>
-<p>I&#39;ll probably make another clone of another arcade game, probably <a
-        href="https://en.wikipedia.org/wiki/Galaga">Galaga</a>. It&#39;s a year older than PAC-MAN and more mechanically
-    complex. I think that will be a good way to take a step and a half outside my current skillset and comfort zone. As
-    that&#39;s were all the learning happens.</p>
-<p>Thank you for reading all of this.</p>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PAC-MAN Clone Blog - Jordan Hunt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="screen">
+        <header class="title-bar">
+            <p class="window-label">Reading Mode</p>
+            <h1>Jordan Hunt</h1>
+            <p class="subtitle">Computer Science Student — Texas State University</p>
+            <p style="margin-top: 15px;"><a href="index.html">← Return to Main Menu</a></p>
+        </header>
+        <div class="menu-box menu-box-wide" style="padding: 30px;">
+            <h1 id="i-wrote-a-rudimentary-pac-man-clone-in-c">I Wrote A Rudimentary PAC-MAN Clone In C</h1>
+            <p><em>(No generative AI was used in the writing of this, just want to address that off the rip. Also this
+                    isn&#39;t
+                    SEO&#39;ed in anyway and I&#39;m not trying to sell you anything. All the links are purely to
+                    provide context or
+                    credit)</em></p>
+            <h2 id="table-of-contents">Table of Contents</h2>
+            <ul>
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#what-inspired-me-to-pick-this-project">What Inspired Me To Pick This Project</a></li>
+                <li><a href="#my-programming-background">My Programming Background</a></li>
+                <li><a href="#why-i-didnt-originally-proceed-with-game-development-as-a-hobby">Why I Didn&#39;t
+                        Originally Proceed
+                        With Game Development as a Hobby</a></li>
+                <li><a href="#about-the-project">About The Project</a>
+                    <ul>
+                        <li><a href="#picking-where-and-how-to-start">Picking Where and How to Start</a></li>
+                        <li><a href="#getting-lucky-with-the-dossier">Getting Lucky With The Dossier</a></li>
+                        <li><a href="#my-development-configuration">My Development Configuration</a></li>
+                    </ul>
+                </li>
+                <li><a href="#what-i-actually-learned-during-development-in-a-technical-sense">What I Actually Learned
+                        During
+                        Development In A Technical Sense</a>
+                    <ul>
+                        <li><a href="#headers">Headers</a></li>
+                        <li><a href="#separation-of-concerns">Separation of Concerns</a></li>
+                        <li><a href="#entity-component-system">Entity Component System</a></li>
+                        <li><a href="#defensive-programming">Defensive Programming</a></li>
+                        <li><a href="#the-basics-of-git">The Basics of Git</a></li>
+                        <li><a href="#pointers-arent-that-complex-anymore">Pointers aren&#39;t that complex anymore</a>
+                        </li>
+                        <li><a href="#other-design-patterns">Other Design Patterns</a></li>
+                        <li><a href="#the-importance-of-iteration">The Importance Of Iteration</a></li>
+                    </ul>
+                </li>
+                <li><a href="#what-i-actually-learned-during-development-in-moral-sense">What I Actually Learned During
+                        Development
+                        in Moral Sense</a>
+                    <ul>
+                        <li><a href="#the-internet-warps-your-senses">The Internet Warps Your Senses</a></li>
+                        <li><a href="#getting-better-at-something-is-very-boring">Getting Better At Something Is Very
+                                Boring</a>
+                        </li>
+                        <li><a href="#knowing-how-my-tools-works-helps-me-work">Knowing How My Tools Works Helps Me
+                                work</a></li>
+                    </ul>
+                </li>
+                <li><a href="#whats-next">What&#39;s Next</a></li>
+            </ul>
+            <p>Hello Internet! I wrote an approximate reconstruction of PAC-MAN implementation in C using SDL2. My
+                project isn&#39;t
+                wholly a 1-to-1 arcade cabinet recreation but it get most of the fundamentals down. It was a really fun
+                project and
+                it helped me complete something from zero, which is often one of the advice you hear from independent
+                game
+                developers and computer programmers alike. This project was totally self-guided (often misguided) and
+                free of
+                generative AI usage. It was a project by me for me and it&#39;s many flaws and shortcomings are mine
+                too. The whole
+                project was learning experience that was meant to force me to buckle myself into my seat and write some
+                C, do
+                research, and commit myself to the learning the process. Overall, I think it went quite well and
+                I&#39;ll share my
+                thoughts in this blog. I also want to write more in general, so this will be an excellent means to
+                practice
+                communicating my thoughts and experiences.</p>
+            <h2 id="about-me">About Me</h2>
+            <h2 id="what-inspired-me-to-pick-this-project">What Inspired Me To Pick This Project</h2>
+            <p>As is common with many computer programmers, I got interested in writing code since through playing
+                games. I grew up
+                playing games on the family computer along with reading comic-b ooks, manga, and sci-fi novels. I also
+                played
+                tabletop games like <a href="https://wizkids.com/heroclix/">HeroClix</a> and <a
+                    href="https://en.wikipedia.org/wiki/MechWarrior:_Dark_Age">MechWarrior: Dark Age</a> and tabletop
+                role-playing
+                games like <a href="https://paizo.com/pathfinder">Pathfinder</a>, <a
+                    href="https://www.mongoosepublishing.com/collections/traveller-rpgs">Traveller</a>, <a
+                    href="https://en.wikipedia.org/wiki/D20_Modern">D20 Modern</a>, and many of the <a
+                    href="https://web.archive.org/web/20050308083942/http://www.white-wolf.com/">White Wolf games</a>. I
+                played some
+                Magic: The Gathering as well, I was always fond of Blue decks. Of the countless games I have played, the
+                ones that
+                made me want to learn how to make games were the marvelous <a
+                    href="https://cavestory.com/games/cavestory+">Cave
+                    Story+</a> and <a href="https://www.supergiantgames.com/games/bastion/">Bastion</a> in the year
+                2011.</p>
+            <p>Those two games really made me understand that video games could be both entertaining and also tell
+                stories that
+                really touch the player&#39;s heart. Prior and after I have played games that I loved and impacted me,
+                but something
+                about playing those two game at made me understand that games were made by people, and I could be a
+                person who made
+                games. Those games were were released during a time where online distribution and the very of idea an
+                indie game
+                were novel, and that really made me think &quot;hey, I could make a game. I have cool idea...&quot;.</p>
+            <p>For the record that &quot;cool idea&quot; has not come to fruition because it&#39;s not a &quot;cool
+                idea&quot; and I
+                still lack the skills to make my &quot;dream game&quot; come to life</p>
+            <p>Fast-forward today I&#39;m a 35 year old man going back to school to get computer science degree in the
+                age of
+                generative AI with hopes to get a job in the rapidly crumbling industry of video games. So after taking
+                Computer
+                Architecture in the Spring and seeing C++ in action with a really great professor who really inspired me
+                to more
+                actively engage with my learning I decided I needed a summer programming project. I wanted to do
+                something outside
+                my current ability level and something that would force me to learn something.</p>
+            <h2 id="my-programming-background">My Programming Background</h2>
+            <p>I actually have a previous Bachelor&#39;s degree in &quot;Information Studies&quot; on my first attempt
+                at
+                university. I genuinely cannot tell you what I learned in that degree program as I don&#39;t even know
+                what it
+                means. I essentially failed out of computer science my first time and I was luck enough to have an
+                advisor who
+                really cared about student success. She helped me scrape my credits together and bundle together to a
+                degree so I
+                could graduate in a timely fashion. I did a little bit of Python and Java in school but nothing larger
+                than a
+                homework program that did some I/O and a for loop or two.</p>
+            <p>I even managed to get a job after graduation and worked at a MEGACORP for a bit. I didn&#39;t really do
+                much
+                programming there either, it was a very small amount of JavaScript my first year and a moderate amount
+                of SQL. I
+                also learned proprietary software I will never see again before I quit because I wasn&#39;t going
+                anywhere or doing
+                anything and most importantly I was miserable.</p>
+            <p>All of my programming came from a couple of E-books on XNA/Monogame and a random smattering of online
+                tutorials. When
+                I first tried to learn game development it was &quot;<a
+                    href="https://en.wikipedia.org/wiki/Microsoft_XNA">XNA</a>&quot; which later became the &quot;<a
+                    href="https://monogame.net/">Monogame</a>&quot; that you see today. I originally picked books on
+                Monogame
+                because I learned that Bastion was written in Monogame. I would later play &quot;Salt &amp;
+                Sanctuary&quot; another
+                excellent game also written in XNA. The XNA/Monogame books were are quite good and I&#39;d highly
+                recommend anyone
+                interested in learning game development pick up Monogame. It&#39;s really beginner-friendly and the
+                online community
+                is really nice.</p>
+            <p>I even did a little bit GDScript with the rise of Godot. I did some tutorials through <a
+                    href="https://www.gdquest.com/">GDQuest</a> and they were quite good as well. However I never quite
+                took the
+                extra step of the path of guided tutorials. I always felt like I &quot;wanted&quot; to make games, but
+                never had the
+                drive to really learn the &quot;process&quot; of making games. I liked &quot;wanting&quot; more than i
+                liked
+                &quot;trying&quot; and I feel like this is a common behavior with a particular type of person. You get
+                infintenatly
+            </p>
+            <h2 id="why-i-didn-t-originally-proceed-with-game-development-as-a-hobby">Why I Didn&#39;t Originally
+                Proceed With Game
+                Development as a Hobby</h2>
+            <p>The biggest issue in my programming background were primarily two things: lack of self-confidence in my
+                programming
+                ability and a lack of self-motivating discipline. Those two issues created a negative feedback loop that
+                really
+                hindered my ability to do anything outside of a very direct tutorial. It&#39;s really messed up because
+                those two
+                issues made getting better really hard. You can&#39;t get better as a programmer if you don&#39;t have
+                the
+                discipline and self-motivation try to solve harder problems, and you can&#39;t improve your discipline
+                if you
+                don&#39;t try to do anything outside your comfort-zone. A vicious cycle that kept me weight down and
+                limited my
+                digital horizons.</p>
+            <p>I read just about <a href="https://www.gamedeveloper.com/game-platforms">magazine article</a> (remember
+                when those
+                were a thing?), <a href="https://makegames.tumblr.com/post/1136623767/finishing-a-game">every blog</a>,
+                and <a href="https://buy.indiegamethemovie.com/">watched every developer interview on </a><a
+                    href="https://buy.indiegamethemovie.com/">&quot;how to be an indie developer</a><a
+                    href="https://buy.indiegamethemovie.com/">&quot; and all of them said</a>&quot;just make
+                games&quot;. The
+                &quot;just&quot; part for me was my biggest issue, I couldn&#39;t seem to &quot;just&quot; do something.
+                My problem
+                was I never really took that to heart because I never really believed I could do anything.</p>
+            <p>I didn&#39;t try hard enough mostly because I didn&#39;t want to fall short of my expectations. I think
+                it&#39;s an
+                elaborate means of procrastination to avoid disappointment ultimately. I don&#39;t know the exact reason
+                but I spent
+                far too long of my time in front of the computer not believing in myself. I did this project to prove to
+                myself I
+                can do something, even something hard and unknown. I also want to give my chance to make something that
+                wasn&#39;t
+                perfect. I also hope that anyone who may read this also internalizes the fact they too can do something.
+            </p>
+            <p>I think I worked though though these limiting beliefs. At least enough for now. I know now I can do
+                things, so long
+                as I try hard and don&#39;t fight myself the entire time. I think this is true for anyone, I think we
+                can all do
+                great things.</p>
+            <h2 id="about-the-project">About The Project</h2>
+            <h3 id="picking-where-and-how-to-start">Picking Where and How to Start</h3>
+            <p>I recently read <a
+                    href="https://www.penguinrandomhouse.com/books/96382/masters-of-doom-by-david-kushner/9780812972153/">&quot;Master&#39;s
+                    Of Doom</a><a
+                    href="https://www.penguinrandomhouse.com/books/96382/masters-of-doom-by-david-kushner/9780812972153/">&quot;</a>
+                book and it was a really good history lesson on nature of game development. I was really impressed that
+                DOOM was
+                written in C, and always was a bit scared of C. My Computer Architecture course had us write in C and
+                C++ and it was
+                really refreshing. John Romero also mentions really liking PAC-MAN in his <a
+                    href="https://romero.com/shop/p/doomguy">&quot;DOOM Guy</a><a
+                    href="https://romero.com/shop/p/doomguy">&quot;</a> autobiography so I chose the arcade classic of
+                yesteryear.
+            </p>
+            <p>I had done some C and C++ tutorials in previous ventures so I thought it would be an good reason to
+                restart where I
+                originally began. I did some of the <a href="https://lazyfoo.net/">LazyFoo SDL2 tutorials</a> in the
+                past but again
+                nothing outside the tutorial guidelines. These tutorials are quite good and I&#39;d recommend them as an
+                intro to
+                SDL. I also wanted to do something in the &quot;old-school&quot; sense and just to start from zero. I
+                elected not to
+                use generative AI software or tools for this project as well.</p>
+            <p>I wanted to focus on learning and I&#39;m of the belief that learning comes from the mistakes you make
+                and the
+                struggle of trying to figure something out. Which is the least glamorous part of learning and the part I
+                think most
+                everything online seems to skip over. I think in the long term this choice will benefit me as a
+                developer. It may
+                slow me down and may not make as marketable but I do think it will help me be a better computer science
+                student.</p>
+            <p>I didn&#39;t do this project in one sitting, I didn&#39;t do this project on my first try, I didn&#39;t
+                do a perfect
+                recreation, and that&#39;s fine. I sturggled on a lot of things and had to look up a lot, but that was
+                the goal so I
+                see that as a success.</p>
+            <h3 id="getting-lucky-with-the-dossier">Getting Lucky With The Dossier</h3>
+            <p>When I picked a PAC-MAN clone, I knew I&#39;d have to do some research on the game. During my initial
+                research I
+                discovered the <a href="https://pacman.holenet.info/">Pac-Man Dossier</a>, and it served as my design
+                document.
+                Strangely enough I discovered it through the gamedeveloper magazine website. This webpage was treasure
+                trove of
+                information both on the game as well as a great history lesson on the game.</p>
+            <p>The Dossier has a lot of great information. It was also something I could reference on what to research.
+                Searching
+                for programming or software help these days isn&#39;t that great. I modified my Ublock filters to get
+                bad search
+                results, and I had to edit my YouTube extensions to do filter out the many unrelated search results.</p>
+            <p>I would read something from the dossier, run into something I didn&#39;t know how to do and internet
+                search for an
+                example. Many of the examples i&#39;d fine were not in C but in Java or Python which then lead me to
+                research how to
+                do something in C. That wasn&#39;t completely optimal workflow it did expose me to a lot of code and
+                reading a lot
+                of different thing is I think helpful.</p>
+            <p>The Dossier included a lot of the inner-working of PAC-MAN and saved me a lot of time on what to do but
+                it wasn&#39;t
+                a how-to guide. I really liked how with this project I had to figure &quot;how&quot; to do something,
+                even though
+                the dossier pretty clearly explain &quot;what&quot; was done, often even &quot;why&quot; something was
+                done.</p>
+            <h3 id="my-development-configuration">My Development Configuration</h3>
+            <p>I recently switch to <a href="https://www.linuxmint.com/">Linux Mint</a> due to frustration with Windows
+                11 and
+                things have been pretty swell. Development on Linux has been pretty breezy overall. I downloaded <a
+                    href="https://www.libsdl.org/">SDL2 and SDL3</a> from the website and <a
+                    href="https://vscodium.com/">VSCodium</a> did a most of the C/C++ configuration for me. I set up my
+                Git
+                repository and I was pretty much all set.</p>
+            <p>I tried using the classic Linux editors like <a href="https://www.gnu.org/software/emacs/">emacs</a> and
+                <a href="https://www.vim.org/">vim</a>, but I couldn&#39;t quite get the hang of it. I grew up on
+                Windows machines
+                and I&#39;m still rather unfamiliar with CLI style computing and text editing. They are great tools, but
+                they are
+                bit too old-school for me. I also tried <a href="https://zed.dev/">Zed</a> for a bit during development
+                (I disabled
+                the AI features), but I didn&#39;t quite like that either. VSCodium and it&#39;s many extensions well
+                suite all my
+                needs.
+            </p>
+            <p>I also download the <a href="https://sourcefoundry.org/hack/">Hack font</a> because I think it&#39;s
+                really easy on
+                my eyes. I think having a good font is important for development. If you&#39;re going to look at a
+                screen with
+                glyphs on it all day, you might as well have glyths that are aesthetically pleasing and present
+                information clearly.
+                There are <a href="https://www.programmingfonts.org/">tons to choose from</a> and I think it gives your
+                code some
+                personality. Having &#39;l&#39;,&#39;1&#39;,&#39;i&#39; all look different or &#39;O&#39;, &#39;0&#39;,
+                and
+                &#39;8&#39; is one of those things you can&#39;t &quot;unsee&quot; once you switch fonts. I think
+                it&#39;s a simple
+                quality of life improvement for anyone who looks at screens, but especially for programmers.</p>
+            <h2 id="what-i-actually-learned-during-development-in-a-technical-sense">What I Actually Learned During
+                Development In A
+                Technical Sense</h2>
+            <h3 id="headers">Headers</h3>
+            <p>This was my first C project that had multiple files. I remember once did an assignment in community
+                college that had
+                one or two shared headers but that was it. My project grew I found that there was lot of code that
+                needed to know
+                where other code was. I had multiple instances of circular dependencies throughout my development
+                process. The
+                biggest culprit was <code>gamecontext.h</code>, <code>ecs.h</code>, and <code>main.h</code> I think
+                because those
+                are the most involved pieces of code I have.</p>
+            <p>I liked using headers because they are force you to create to think about function signatures and
+                declaring constants
+                ahead of time. It&#39;s sort of like pseudocode in that you don&#39;t quite know how something ought to
+                be
+                implemented but it gives you a general shape most of the time and you can easily modify. Having done
+                this project in
+                C I found it to be very particularly insightful in that C doesn&#39;t do a lot things for you. I was
+                forced to learn
+                about how forward declaration work and made sure my <code>.h</code> were populated with the proper data.
+                Making sure
+                functions signatures match in there <code>.c</code> and <code>.h</code> definition is important and I
+                goofed that up
+                often.</p>
+            <h3 id="separation-of-concerns">Separation of Concerns</h3>
+            <p>At my first year at MEGACORP in my naive vigor to be a good employee I read a small amount <a
+                    href="[Head First Design Patterns [Book]](https://www.oreilly.com/library/view/head-first-design/0596007124/">Heads
+                    First Design Patterns</a>) because it was available in the employee &quot;library&quot;. The
+                &quot;library&quot;
+                being a bookcase full of full-throated Corpo propaganda, trite entrepreneur books and mid 90&#39;s MBA
+                dreck, and
+                religious conversion pamphlets. The design pattern book just caught me eye by chance and I read at my
+                desk.</p>
+            <p>I learned about &quot;separation of concerns&quot; from that book and I have seen and read that design
+                pattern
+                mentioned in a many of the game development tutorial as well. I tried to divide up as much as possible
+                to make
+                things do one thing or only handle one thing. Doing or handling one can be a rather broad statement but
+                I think I
+                managed to keep things small enough that the scope and context of anyone particular file could stay in
+                my head.</p>
+            <p><code>main.c</code> for example handles the game loop. Handling the game loop is main&#39;s job but
+                handling the game
+                loop means it has to coordinate a lot different things. Things like the <code>gamecontext</code> and the
+                <code>sdlcontext</code> and all the various systems I ended up building. <code>main</code> had to
+                handled all of
+                those things but that mean all of those things themselves had to handle other things and often
+                themselves.
+            </p>
+            <p>I like to think of separation of concerns a bit like toy blocks in each concern itself is a block you
+                bind and bundle
+                blocks together to create small chunks of the whole set. With <code>main</code> being the whole playset
+                that
+                contains all of the smaller sets you had built prior. Also much like a toy block set, it&#39;s can
+                difficult to see
+                how a single piece fits into the whole until you actually put it all together. During the very beginning
+                of my the
+                project I started with just <code>map.h</code>, <code>maptile.c</code>, and <code>maze.txt</code>.
+                It&#39;s
+                difficult to see how all of that will build into a larger game, but you can much more easily see how
+                maptiles can be
+                generated from the .txt file and be bundled together to create a map.</p>
+            <h3 id="entity-component-system">Entity Component System</h3>
+            <p>The Entity Component System (ECS) what I&#39;m actually most proud of in this project. I first heard of
+                an ECS from
+                the <a href="https://gameprogrammingpatterns.com/">Game Programming Patterns book</a> I bought a long
+                time ago. I
+                read a little bit of before but I never read it cover to cover. I&#39;m currently reading now as part of
+                my mental
+                recalibration toward reading more physical books every month. I don&#39;t rightly know if my project
+                really needed
+                an ECS, but was really fun to research what an ECS is, how an ECS can be used for my particular project,
+                and
+                implementing through trial and error.</p>
+            <p>Making things an <code>Entity</code> that&#39;s defined by various IDs made thinking about the types of
+                systems I
+                needed a lot easier. I had <code>POSITION</code>, <code>VELOCITY</code>, <code>RENDERABLE</code> entity
+                IDs so it me
+                think I would need things like a <code>movementsystem</code>, <code>collisionsystem</code>,
+                <code>renderSystem</code> and so on. Having an ECS made features like frightened mode, fruit spawning,
+                and dot
+                scoring easier to manage, since they’re just component changes or new entities rather than spe cial‑case
+                if‑chains.
+            </p>
+            <p>This allowed me to focus more on &quot;<a
+                    href="https://en.wikipedia.org/wiki/Data-oriented_design">Data-Oriented
+                    Design</a>&quot; which is something I hear/see often online to be a superior methodology to &quot;<a
+                    href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented
+                    programming</a>&quot;. I
+                don&#39;t know if was doing it correctly but I did see the value of Data-oriented programming.</p>
+            <h3 id="defensive-programming">Defensive Programming</h3>
+            <p>I have never created anything particularly large in C and I didn&#39;t know how easy it is write code
+                that
+                &quot;build&quot; but doesn&#39;t run or runs but crashes as soon as you do something. Segmentation
+                faults are a
+                common trope online but I didn&#39;t realize how real it was until I started this project. I made sure
+                to a
+                <code>NULL</code> pointers were handled properly, either through a instant <code>return</code> or a some
+                sort of
+                output to console. C doesn&#39;t have all of the sort of niceties in something you&#39;d get in
+                something like Java.
+                There aren&#39;t a lot of functions like <code>.length()</code> so you have to keep track of array
+                bounds yourself.
+                Just little things like that made me code with a bit more. I actually enjoy that in the sense it forces
+                me to
+                actively think about those sorts of thing. In a project like this where&#39; it&#39;s just me, I
+                didn&#39;t want to
+                develop bad habits so I spent a some time reading StackOverflow and Programming related subreddits to
+                get little bit
+                of a general feel for what a C programmer shouldn&#39;t do.
+            </p>
+            <h3 id="the-basics-of-git">The Basics of Git</h3>
+            <p>I used Git and GitHub to store my code that allowed me to work on my home PC and the University PC with
+                relative
+                easy. Learning to <code>git add</code>, <code>git commit -m</code>, <code>git push</code>, and
+                <code>git pull</code>
+                became pretty natural. I used the GUI in VSCodium mostly but I also did several through the CLI as well.
+                I even
+                created for the entity component system. I thought it would be good way to try and develop something
+                totally
+                separate from the rest of the code. Once I got it work I was able to just merge it back into the main
+                branch. It was
+                relatively easy to create and merge. I would imagine if this project were more complex or had more
+                contributors
+                it&#39;d be more important to track changes more rigorously but luckily I didn&#39;t have to worry about
+                that at
+                all.
+            </p>
+            <h3 id="pointers-aren-t-that-complex-anymore">Pointers aren&#39;t that complex anymore</h3>
+            <p>For the longest time I thought pointers were super confusing and unwieldily curiosities of the C
+                language. With this
+                project I have come to appreciate their value. A pointer is an address in memory, they referring to a
+                value
+                somewhere else. Dereferencing a pointer with <code>&amp;</code> allows you access the value at that
+                memory address.
+                That&#39;s it. Pointers are often a tricky thing for CS students (myself included most certainly) but
+                using them
+                more frequently gets you into a groove and it starts to become more natural. One of the things that
+                tripped me up
+                remembering I wasn&#39;t always passing a pointer, sometimes I was passing the memory address of the
+                value.</p>
+            <h3 id="other-design-patterns">Other Design Patterns</h3>
+            <p>I didn&#39;t do it intentionally but I did implement the Flyweight and Facade Patterns. The <a
+                    href="https://en.wikipedia.org/wiki/Flyweight_pattern">Flyweight Pattern</a> is something I
+                recognized from my
+                previous Monogame/XNA development and using in my <code>graphics.c</code> seemed to make sense to me. I
+                loaded the
+                spritesheet of the PAC-MAN then is reused to draw every sprite draw call instead of loading duplicate
+                texture for
+                each entity. I didn&#39;t know the name of the Flyweight pattern and I had never seen any other way of
+                drawing
+                sprites.</p>
+            <p>I also used the <a href="https://en.wikipedia.org/wiki/Facade_pattern">Facade Pattern</a> another one I
+                was
+                unfamiliar with by name but I knew the general idea behind it before hand. In my
+                <code>InitializeSDL()</code> method
+                it&#39;s the single entry point for a more complex instructions. I didn&#39;t know that was a design
+                pattern until
+                re-reading the Heads Up Design patterns book and searching online for fundamental C programming software
+                engineering
+                recommendations
+            </p>
+            <h3 id="the-importance-of-iteration">The Importance Of Iteration</h3>
+            <p>One of if not the most important things I learned in this project from a technical perspective is that
+                programming is
+                a very iterative process. A lot of my code is and git commit messages are full of message saying
+                something is
+                &quot;sorta&quot; working or I &quot;fixed&quot; something multiple times. Ideally, I&#39;d like to be
+                able to fix
+                things once and be able to move forward on something else, but until then I think programming on my own
+                is about
+                getting something working and then getting something correct later, and then getting it
+                &quot;right&quot; finally.
+            </p>
+            <p>I don&#39;t think it&#39;s critical to focus on getting everything right on my first try every time for
+                everything
+                when it comes to programming as I don&#39;t think that&#39;s a healthy way of looking at
+                problem-solving. I think
+                that&#39; a hold over from our education system&#39;s test taking approach, in that they are one and
+                done
+                all-or-nothing exams. Working on a personal project gives you time to make mistakes and learn from them
+                at much more
+                lower stakes.</p>
+            <p>Making mistakes, addressing the mistakes, and iterating is I think the purest loop of any programming
+                project. There
+                is no avoiding, and even trying to avoid is costly in time and understanding. Learning to use <a
+                    href="https://sourceware.org/git/binutils-gdb.git">gdb</a>, <a
+                    href="https://valgrind.org/">valgrind</a>, and <a
+                    href="https://en.wikipedia.org/wiki/Rubber_duck_debugging">rubber ducking</a> are all essential
+                skills for
+                programming. In the same way creative writing involves a lot of re-writing, programming involves a lot
+                of iteration.
+                Sometimes it&#39;s a sign I going in the wrong direction, my project had many of those instances, but
+                more often
+                than it was I learned the most.</p>
+            <h2 id="what-i-actually-learned-during-development-in-moral-sense">What I Actually Learned During
+                Development in Moral
+                Sense</h2>
+            <h3 id="the-internet-warps-your-senses">The Internet Warps Your Senses</h3>
+            <p>I think there has been some sort of narrative in programming circles that everything is super fast and if
+                you&#39;re
+                not hacking together something near instantly you&#39;re not really a programmer. I started this project
+                on April
+                9th and I&#39;m finishing this post-development writeup on July 9th. Part of me feels like three months
+                from zero to
+                a functional prototype is rather good, however speed really one of the primary measures of value in our
+                modern
+                development culture. I think that&#39;s foolish and we are rewarding the wrong things for the wrong
+                reasons in
+                general. I didn&#39;t make the <a href="https://en.wikipedia.org/wiki/Killer_application">killer-app</a>
+                in three
+                months and that&#39;s fine. That was never my objective.</p>
+            <h3 id="getting-better-at-something-is-very-boring">Getting Better At Something Is Very Boring</h3>
+            <p>Much like any other skill, art, or craft, getting better at programming is a very incremental and
+                unremarkable. I
+                know a lot of stuff I didn&#39;t know prior because of this project, however I can&#39;t just hack
+                together a full
+                arcade classic like <a href="https://en.wikipedia.org/wiki/Centipede_(video_game">Centipede</a>) or <a
+                    href="https://en.wikipedia.org/wiki/Bubble_Bobble">Bubble Bobble</a>. I&#39;ll have to keep coding
+                away and
+                solving more problems to be able to put one of those games together from scratch.</p>
+            <h3 id="knowing-how-my-tools-works-helps-me-work">Knowing How My Tools Works Helps Me work</h3>
+            <p>Knowing the basics of how my tools (All the various softwares I use) work makes using them to easier.
+                Taking some
+                time to learn hotkeys makes getting around VSCodium easier. Even just simple things like changing files
+                with
+                <code>CTRL+P</code> or go to symbol with <code>CTRL+T</code> helps reduce the friction of coding. There
+                is a lot of
+                friction already in development and a lot of it is totally necessary, but I shouldn&#39;t have friction
+                going from
+                one page to another. I&#39;m going to learn more hotkeys and other CLI tools to help my development for
+                my next
+                project.
+            </p>
+            <h2 id="what-s-next">What&#39;s Next</h2>
+            <p>I&#39;ll probably make another clone of another arcade game, probably <a
+                    href="https://en.wikipedia.org/wiki/Galaga">Galaga</a>. It&#39;s a year older than PAC-MAN and more
+                mechanically
+                complex. I think that will be a good way to take a step and a half outside my current skillset and
+                comfort zone. As
+                that&#39;s were all the learning happens.</p>
+            <p>Thank you for reading all of this.</p>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
