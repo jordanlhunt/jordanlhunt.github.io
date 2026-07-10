@@ -1,23 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* --- COLOR PALETTE & VARIABLES --- */
 :root {
     --bg-color: #f8fafc;
-    /* Soft modern gray background */
     --card-bg: #ffffff;
-    /* Crisp white for content boxes */
     --text-main: #0f172a;
-    /* Dark slate for high contrast reading */
     --text-muted: #64748b;
-    /* Softer gray for subtitles */
     --border-color: #e2e8f0;
-    /* Light borders */
     --accent: #2563eb;
-    /* Professional blue for links/accents */
     --accent-hover: #1d4ed8;
 }
 
-/* --- GLOBAL RESETS --- */
 * {
     box-sizing: border-box;
 }
@@ -31,14 +23,12 @@ body {
     line-height: 1.6;
 }
 
-/* Repurposing your "screen" wrapper into a standard centered container */
 .screen {
     max-width: 900px;
     margin: 0 auto;
     padding: 60px 20px;
 }
 
-/* --- TYPOGRAPHY & LINKS --- */
 h1,
 h2,
 h3 {
@@ -58,7 +48,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* --- HEADER / TITLE BAR --- */
 .title-bar {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 24px;
@@ -86,7 +75,6 @@ a:hover {
     margin: 0;
 }
 
-/* --- HERO SECTION --- */
 .hero-box {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -116,7 +104,6 @@ a:hover {
     margin-bottom: 12px;
 }
 
-/* --- STATUS BOX --- */
 .status-box {
     background: var(--bg-color);
     padding: 24px;
@@ -146,7 +133,6 @@ a:hover {
     color: var(--text-main);
 }
 
-/* --- MENU GRID & CARDS --- */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -178,7 +164,6 @@ a:hover {
     margin-bottom: 16px;
 }
 
-/* --- MENU LISTS --- */
 .menu-list {
     list-style: none;
     margin: 0;
@@ -190,12 +175,10 @@ a:hover {
     padding: 12px 0;
 }
 
-/* This removes the retro pointing finger */
 .menu-list li::before {
     content: none;
 }
 
-/* --- BLOG POST FORMATTING --- */
 .blog-content {
     max-width: 100%;
     overflow-wrap: break-word;
