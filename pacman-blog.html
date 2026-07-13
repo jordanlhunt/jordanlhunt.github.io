@@ -16,21 +16,17 @@
                 <span>_</span><span>□</span><span>X</span>
             </div>
         </div>
-
         <div class="content-area">
             <header>
                 <h1>I Wrote A Rudimentary PAC-MAN Clone In C</h1>
                 <p class="subtitle">~ A Summer Project by Jordan Hunt ~</p>
             </header>
-
             <p class="disclaimer">
                 <em>(No generative AI was used in the writing of this, just want to address that off the rip. Also this
                     isn't SEO'ed in anyway and I'm not trying to sell you anything. All the links are purely to provide
                     context or credit)</em>
             </p>
-
             <hr>
-
             <div class="toc-box">
                 <h2>Table of Contents</h2>
                 <ul class="menu-list">
@@ -44,7 +40,6 @@
                     <li><a href="#whats-next">What's Next</a></li>
                 </ul>
             </div>
-
             <div class="blog-content">
                 <h2 id="about-me">About Me</h2>
                 <p>Hello Internet! I wrote an approximate reconstruction of PAC-MAN implementation in C using SDL2. My
@@ -57,7 +52,6 @@
                     to the learning the process. Overall, I think it went quite well and I'll share my thoughts in this
                     blog. I also want to write more in general, so this will be an excellent means to practice
                     communicating my thoughts and experiences.</p>
-
                 <h2 id="what-inspired-me">What Inspired Me To Pick This Project</h2>
                 <p>As is common with many computer programmers, I got interested in writing code since through playing
                     games. I grew up playing games on the family computer along with reading comic-books, manga, and
@@ -86,7 +80,6 @@
                     professor who really inspired me to more actively engage with my learning I decided I needed a
                     summer programming project. I wanted to do something outside my current ability level and something
                     that would force me to learn something.</p>
-
                 <h2 id="my-background">My Programming Background</h2>
                 <p>I actually have a previous Bachelor's degree in "Information Studies" on my first attempt at
                     university. I genuinely cannot tell you what I learned in that degree program as I don't even know
@@ -113,7 +106,6 @@
                     games, but never had the drive to really learn the "process" of making games. I liked "wanting" more
                     than i liked "trying" and I feel like this is a common behavior with a particular type of person.
                 </p>
-
                 <h2 id="why-i-didnt">Why I Didn't Originally Proceed With Game Development as a Hobby</h2>
                 <p>The biggest issue in my programming background were primarily two things: lack of self-confidence in
                     my programming ability and a lack of self-motivating discipline. Those two issues created a negative
@@ -138,7 +130,6 @@
                 <p>I think I worked though though these limiting beliefs. At least enough for now. I know now I can do
                     things, so long as I try hard and don't fight myself the entire time. I think this is true for
                     anyone, I think we can all do great things.</p>
-
                 <h2 id="about-project">About The Project</h2>
                 <p>I recently read <a
                         href="https://www.penguinrandomhouse.com/books/96382/masters-of-doom-by-david-kushner/9780812972153/">Masters
@@ -161,7 +152,6 @@
                 <p>I didn't do this project in one sitting, I didn't do this project on my first try, I didn't do a
                     perfect recreation, and that's fine. I sturggled on a lot of things and had to look up a lot, but
                     that was the goal so I see that as a success.</p>
-
                 <h3>Getting Lucky With The Dossier</h3>
                 <p>When I picked a PAC-MAN clone, I knew I'd have to do some research on the game. During my initial
                     research I discovered the <a href="https://pacman.holenet.info/">Pac-Man Dossier</a>, and it served
@@ -180,7 +170,6 @@
                     but it wasn't a how-to guide. I really liked how with this project I had to figure "how" to do
                     something, even though the dossier pretty clearly explain "what" was done, often even "why"
                     something was done.</p>
-
                 <h3>My Development Configuration</h3>
                 <p>I recently switch to <a href="https://www.linuxmint.com/">Linux Mint</a> due to frustration with
                     Windows 11 and things have been pretty swell. Development on Linux has been pretty breezy overall. I
@@ -199,9 +188,7 @@
                     pleasing and present information clear ly. There are <a
                         href="https://www.programmingfonts.org/">tons to choose from</a> and I think it gives your code
                     some personality.</p>
-
                 <h2 id="technical-learnings">What I Actually Learned During Development In A Technical Sense</h2>
-
                 <h3>Headers</h3>
                 <p>This was my first C project that had multiple files. I remember once did an assignment in community
                     college that had one or two shared headers but that was it. My project grew I found that there was
@@ -217,7 +204,6 @@
                     doesn't do a lot things for you. I was forced to learn about how forward declaration work and made
                     sure my <code>.h</code> were populated with the proper data. Making sure functions signatures match
                     in there <code>.c</code> and <code>.h</code> definition is important and I goofed that up often.</p>
-
                 <h3>Separation of Concerns</h3>
                 <p>At my first year at MEGACORP in my naive vigor to be a good employee I read a small amount <a
                         href="https://www.oreilly.com/library/view/head-first-design/0596007124/">Heads First Design
@@ -245,7 +231,6 @@
                     of that will build into a larger game, but you can much more easily see how maptiles can be
                     generated from the .txt file and be bundled together to create a map.
                 </p>
-
                 <h3>Entity Component System</h3>
                 <p>The Entity Component System (ECS) what I'm actually most proud of in this project. I first heard of
                     an ECS from the <a href="https://gameprogrammingpatterns.com/">Game Programming Patterns book</a> I
@@ -267,7 +252,6 @@
                         href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented
                         programming</a>". I don't know if was doing it correctly but I did see the value of
                     Data-oriented programming.</p>
-
                 <h3>Defensive Programming</h3>
                 <p>I have never created anything particularly large in C and I didn 't know how easy it is write code
                     that "build " but doesn 't run or runs but crashes as soon as you do something. Segmentation faults
@@ -281,7 +265,6 @@
                     develop bad habits so I spent a some time reading StackOverflow and Programming related subreddits
                     to get little bit of a general feel fo r what a C programmer shouldn 't do.
                 </p>
-
                 <h3>The Basics of Git</h3>
                 <p>I used Git and GitHub to store my code that allowed me to work on my home PC and the University PC
                     with relative easy. Learning to <code>git add</code>, <code>git commit -m</code>,
@@ -293,7 +276,6 @@
                     contributors it'd be more important to track changes more rigorously but luckily I didn't have to
                     worry about that at all.
                 </p>
-
                 <h3>Pointers aren't that complex anymore</h3>
                 <p>For the longest time I thought pointers were super confusing and unwieldily curiosities of the C
                     language. With this project I have come to appreciate their value. A pointer is an address in
@@ -302,7 +284,6 @@
                     students (myself included most certainly) but using them more frequently gets you into a groove and
                     it starts to become more natural. One of the things that tripped me up remembering I wasn't always
                     passing a pointer, sometimes I was passing the memory address of the value.</p>
-
                 <h3>Other Design Patterns</h3>
                 <p>I didn't do it intentionally but I did implement the Flyweight and Facade Patterns. The <a
                         href="https://en.wikipedia.org/wiki/Flyweight_pattern">Flyweight Pattern</a> is something I
@@ -316,7 +297,6 @@
                     didn't know that was a design pattern until re-reading the Heads Up Design patterns book and
                     searching online for fundamental C programming software engineering recommendations.
                 </p>
-
                 <h3>The Importance Of Iteration</h3>
                 <p>One of if not the most important things I learned in this project from a technical perspective is
                     that programming is a very iterative process. A lot of my code is and git commit messages are full
@@ -337,9 +317,7 @@
                     skills for programming. In the same way creative writing involves a lot of re-writing, programming
                     involves a lot of iteration. Sometimes it's a sign I going in the wrong direction, my project had
                     many of those instances, but more often than it was I learned the most.</p>
-
                 <h2 id="moral-learnings">What I Actually Learned During Development in Moral Sense</h2>
-
                 <h3>The Internet Warps Your Senses</h3>
                 <p>I think there has been some sort of narrative in programming circles that everything is super fast
                     and if you're not hacking together something near instantly you're not really a programmer. I
@@ -349,7 +327,6 @@
                     foolish and we are rewarding the wrong things for the wrong reasons in general. I didn't make the <a
                         href="https://en.wikipedia.org/wiki/Killer_application">killer-app</a> in three months and
                     that's fine. That was never my objective.</p>
-
                 <h3>Getting Better At Something Is Very Boring</h3>
                 <p>Much like any other skill, art, or craft, getting better at programming is a very incremental and
                     unremarkable. I know a lot of stuff I didn't know prior because of this project, however I can't
@@ -357,7 +334,6 @@
                         href="https://en.wikipedia.org/wiki/Centipede_(video_game)">Centipede</a> or <a
                         href="https://en.wikipedia.org/wiki/Bubble_Bobble">Bubble Bobble</a>. I'll have to keep coding
                     away and solving more problems to be able to put one of those games together from scratch.</p>
-
                 <h3>Knowing How My Tools Works Helps Me work</h3>
                 <p>Knowing the basics of how my tools (All the various softwares I use) work makes using them to easier.
                     Taking some time to learn hotkeys makes getting around VSCodium easier. Even just simple things like
@@ -365,15 +341,19 @@
                     friction of coding. There is a lot of friction already in development and a lot of it is totally
                     necessary, but I shouldn't have friction going from one page to another. I'm going to learn more
                     hotkeys and other CLI tools to help my development for my next project.</p>
-
                 <h2 id="whats-next">What's Next</h2>
+                <p>This whole post is meant to expound <a
+                        href="https://raw.githubusercontent.com/jordanlhunt/Summer_2026_Pac_Man_C/refs/heads/main/assets/Notes/Things_I_Learned_About.txt">upon
+                        what I learned in this project</a>. During the development of this project I tried to track
+                    everything I learned. I really think it&#39;s important to be able to expound upon what you have
+                    learned or done in order to truly internalize your learning. I will do the same thing with on my
+                    next project. </p>
                 <p>I'll probably make another clone of another arcade game, probably <a
                         href="https://en.wikipedia.org/wiki/Galaga">Galaga</a>. It's a year older than PAC-MAN and more
                     mechanically complex. I think that will be a good way to take a step and a half outside my current
                     skillset and comfort zone. As that's were all the learning happens.</p>
                 <p>Thank you for reading all of this.</p>
             </div>
-
             <hr>
             <footer class="footer">
                 <p><a href="index.html">← Return to Main Menu</a></p>
