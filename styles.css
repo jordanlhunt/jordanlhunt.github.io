@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap");
-
 :root {
   --win-bg: #c0c0c0;
   --win-light: #ffffff;
@@ -12,17 +11,14 @@
   --acc-teal: #00b2a9;
   --link: #0000ee;
 }
-
 * {
   box-sizing: border-box;
 }
-
 .video-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 body {
   background-color: #008080;
   background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23007070' fill-opacity='0.4'%3E%3Cpath d='M0 0h1v1H0zM10 10h1v1h-1z'/%3E%3C/g%3E%3C/svg%3E");
@@ -33,7 +29,6 @@ body {
   padding: 20px;
   line-height: 1.5;
 }
-
 .screen {
   max-width: 850px;
   margin: 0 auto;
@@ -45,7 +40,6 @@ body {
   box-shadow: 1px 1px 0 var(--win-black);
   padding: 0;
 }
-
 .title-bar {
   background: linear-gradient(90deg, var(--txst-maroon) 0%, #a83236 100%);
   color: white;
@@ -58,12 +52,10 @@ body {
   align-items: center;
   user-select: none;
 }
-
 .window-buttons {
   display: flex;
   gap: 2px;
 }
-
 .window-buttons span {
   display: inline-flex;
   justify-content: center;
@@ -80,7 +72,6 @@ body {
   cursor: pointer;
   line-height: 1;
 }
-
 .content-area {
   background-color: var(--content-bg);
   margin: 12px;
@@ -90,7 +81,6 @@ body {
   border-right: 2px solid var(--win-light);
   border-bottom: 2px solid var(--win-light);
 }
-
 h1 {
   font-family: "Press Start 2P", monospace;
   color: var(--txst-maroon);
@@ -99,7 +89,6 @@ h1 {
   text-shadow: 2px 2px 0 #e0e0e0;
   margin-bottom: 4px;
 }
-
 .subtitle {
   text-align: center;
   font-family: "VT323", monospace;
@@ -108,7 +97,6 @@ h1 {
   margin-top: 0;
   margin-bottom: 20px;
 }
-
 h2 {
   font-family: "VT323", monospace;
   color: var(--acc-purple);
@@ -117,27 +105,22 @@ h2 {
   padding-bottom: 4px;
   margin-top: 30px;
 }
-
 h3 {
   font-family: "Verdana", sans-serif;
   color: var(--txst-maroon);
   font-size: 1.1rem;
   margin-top: 20px;
 }
-
 a:link {
   color: var(--link);
   text-decoration: underline;
 }
-
 a:visited {
   color: var(--acc-purple);
 }
-
 a:active {
   color: #ee0000;
 }
-
 a:hover {
   color: #ffffff;
   background-color: var(--acc-teal);
@@ -145,7 +128,6 @@ a:hover {
   padding: 0 3px;
   border-radius: 2px;
 }
-
 hr {
   border: 0;
   height: 8px;
@@ -164,7 +146,6 @@ hr {
   border-top: 2px solid var(--win-dark);
   border-bottom: 2px solid var(--win-light);
 }
-
 .menu-box,
 .status-box,
 .toc-box {
@@ -172,35 +153,29 @@ hr {
   padding: 16px;
   margin-bottom: 20px;
 }
-
 .menu-box {
   background: #ffffcc;
   border-left: 5px solid var(--txst-gold);
 }
-
 .status-box {
   background: #e6e6fa;
   border: 2px ridge var(--win-bg);
   border-left: 5px solid var(--acc-teal);
 }
-
 .toc-box {
   background: #f0f8ff;
   border: 2px groove var(--win-bg);
   border-left: 5px solid var(--acc-purple);
 }
-
 .menu-list {
   list-style: none;
   padding-left: 0;
 }
-
 .menu-list li {
   margin-bottom: 8px;
   padding-left: 20px;
   position: relative;
 }
-
 .menu-list li::before {
   content: "»";
   color: var(--txst-gold);
@@ -209,7 +184,6 @@ hr {
   position: absolute;
   left: 0;
 }
-
 .disclaimer {
   background: #fff0f0;
   border-left: 4px solid var(--txst-maroon);
@@ -217,18 +191,15 @@ hr {
   font-style: italic;
   font-size: 0.95rem;
 }
-
 .blog-content {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 16px;
   line-height: 1.7;
   color: #222;
 }
-
 .blog-content p {
   margin-bottom: 16px;
 }
-
 .blog-content code {
   font-family: "Courier New", Courier, monospace;
   background-color: #f4f4f4;
@@ -236,7 +207,6 @@ hr {
   padding: 2px 5px;
   color: var(--txst-maroon);
 }
-
 .footer {
   text-align: center;
   font-size: 12px;
@@ -247,30 +217,24 @@ hr {
   color: #333;
   font-family: Verdana, sans-serif;
 }
-
 .footer a {
   font-weight: bold;
 }
-
 @media (max-width: 600px) {
   body {
     padding: 10px;
   }
-
   .content-area {
     padding: 16px;
     margin: 8px;
   }
-
   h1 {
     font-size: 1.1rem;
   }
-
   .footer {
     margin: 16px -16px -16px -16px;
   }
 }
-
 /* --- Navigation Bar --- */
 .nav-bar {
   background-color: var(--win-bg);
@@ -283,7 +247,6 @@ hr {
   font-family: "Tahoma", sans-serif;
   font-size: 13px;
 }
-
 .nav-bar a {
   text-decoration: none;
   color: var(--win-black);
@@ -295,12 +258,10 @@ hr {
   background: var(--win-bg);
   display: inline-block;
 }
-
 .nav-bar a:hover {
   background: var(--txst-maroon);
   color: white;
 }
-
 /* "Pressed" state for the active page */
 .nav-bar a:active,
 .nav-bar a.active {
@@ -311,13 +272,11 @@ hr {
   background: #e0e0e0;
   font-weight: bold;
 }
-
 .archive-container {
   border: 2px inset var(--win-bg);
   background: var(--content-bg);
   margin-bottom: 20px;
 }
-
 .archive-header {
   display: flex;
   background: var(--win-bg);
@@ -328,7 +287,6 @@ hr {
   font-weight: bold;
   color: var(--win-black);
 }
-
 .archive-header .col-name {
   flex-grow: 1;
 }
@@ -336,7 +294,6 @@ hr {
   width: 120px;
   text-align: right;
 }
-
 .archive-list {
   list-style: none;
   padding: 0;
@@ -344,44 +301,50 @@ hr {
   font-family: "VT323", monospace;
   font-size: 1.2rem;
 }
-
 .archive-list li {
   display: flex;
   border-bottom: 1px dashed #e0e0e0;
   padding: 6px 12px;
   transition: background 0.1s;
 }
-
 .archive-list li:last-child {
   border-bottom: none;
 }
-
 .archive-list li:hover {
   background-color: var(--txst-maroon);
   cursor: pointer;
 }
-
 .archive-list li:hover a,
 .archive-list li:hover .post-date {
   color: white !important;
   text-decoration: none;
 }
-
 .archive-list .file-icon {
   margin-right: 8px;
   color: var(--txst-gold);
 }
-
 .archive-list a {
   flex-grow: 1;
   text-decoration: none;
   color: var(--link);
 }
-
 .archive-list .post-date {
   width: 120px;
   text-align: right;
   color: var(--win-dark);
   font-size: 1rem;
   white-space: nowrap;
+}
+.publish-date {
+  text-align: center;
+  font-family: "VT323", monospace;
+  font-size: 1.3rem;
+  color: var(--win-dark);
+  margin-top: 0;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+.publish-date time {
+  color: var(--acc-purple);
+  font-weight: bold;
 }
