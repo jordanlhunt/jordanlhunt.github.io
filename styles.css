@@ -271,7 +271,6 @@ hr {
   }
 }
 
-
 /* --- Navigation Bar --- */
 .nav-bar {
   background-color: var(--win-bg);
@@ -311,4 +310,78 @@ hr {
   border-bottom: 1px solid var(--win-light);
   background: #e0e0e0;
   font-weight: bold;
+}
+
+.archive-container {
+  border: 2px inset var(--win-bg);
+  background: var(--content-bg);
+  margin-bottom: 20px;
+}
+
+.archive-header {
+  display: flex;
+  background: var(--win-bg);
+  border-bottom: 2px solid var(--win-dark);
+  padding: 4px 12px;
+  font-family: "Tahoma", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--win-black);
+}
+
+.archive-header .col-name {
+  flex-grow: 1;
+}
+.archive-header .col-date {
+  width: 120px;
+  text-align: right;
+}
+
+.archive-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: "VT323", monospace;
+  font-size: 1.2rem;
+}
+
+.archive-list li {
+  display: flex;
+  border-bottom: 1px dashed #e0e0e0;
+  padding: 6px 12px;
+  transition: background 0.1s;
+}
+
+.archive-list li:last-child {
+  border-bottom: none;
+}
+
+.archive-list li:hover {
+  background-color: var(--txst-maroon);
+  cursor: pointer;
+}
+
+.archive-list li:hover a,
+.archive-list li:hover .post-date {
+  color: white !important;
+  text-decoration: none;
+}
+
+.archive-list .file-icon {
+  margin-right: 8px;
+  color: var(--txst-gold);
+}
+
+.archive-list a {
+  flex-grow: 1;
+  text-decoration: none;
+  color: var(--link);
+}
+
+.archive-list .post-date {
+  width: 120px;
+  text-align: right;
+  color: var(--win-dark);
+  font-size: 1rem;
+  white-space: nowrap;
 }
