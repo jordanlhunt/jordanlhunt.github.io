@@ -270,3 +270,45 @@ hr {
     margin: 16px -16px -16px -16px;
   }
 }
+
+
+/* --- Navigation Bar --- */
+.nav-bar {
+  background-color: var(--win-bg);
+  border-top: 2px solid var(--win-light);
+  border-bottom: 2px solid var(--win-dark);
+  padding: 4px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-family: "Tahoma", sans-serif;
+  font-size: 13px;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: var(--win-black);
+  padding: 3px 12px;
+  border-top: 1px solid var(--win-light);
+  border-left: 1px solid var(--win-light);
+  border-right: 1px solid var(--win-dark);
+  border-bottom: 1px solid var(--win-dark);
+  background: var(--win-bg);
+  display: inline-block;
+}
+
+.nav-bar a:hover {
+  background: var(--txst-maroon);
+  color: white;
+}
+
+/* "Pressed" state for the active page */
+.nav-bar a:active,
+.nav-bar a.active {
+  border-top: 1px solid var(--win-dark);
+  border-left: 1px solid var(--win-dark);
+  border-right: 1px solid var(--win-light);
+  border-bottom: 1px solid var(--win-light);
+  background: #e0e0e0;
+  font-weight: bold;
+}
